@@ -57,7 +57,20 @@ body {
 }
 
 .answer-text {
-    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.answer-text input {
+    margin-right: 5px;
+}
+
+.right {
+    color: green;
+}
+
+.wrong {
+    color:red;
 }
 
 .close {
