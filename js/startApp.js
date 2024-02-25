@@ -32,8 +32,11 @@ function createBtnElectro() {
 
   btnContainer.append(btnRandom10);
   btnContainer.append(btnRandom50);
-  btnContainer.append(btnRandomAll);
   btnContainer.append(btnViewAll);
+  
+  btnRandom10.addEventListener('click', createAnwsHandler.bind(null, 10))
+  
+  btnRandom50.addEventListener('click', createAnwsHandler.bind(null, 50))
 
   btnViewAll.addEventListener("click", viewAllHandler);
 
@@ -47,6 +50,21 @@ async function viewAllHandler(e) {
   const closeBtn = document.createElement("button");
   const { createQuestionList } = await import("./viewAll.js");
   const questionsList = createQuestionList();
+
+  closeBtn.classList.add("close");
+
+  closeBtn.addEventListener("click", startApp);
+
+  container.append(questionsList);
+  container.append(closeBtn);
+}
+
+export async function createAnwsHandler(n) {
+  clearContainer();
+
+  const closeBtn = document.createElement("button");
+  const { createAnswersList } = await import("./test.js");
+  const questionsList = createAnswersList(n);
 
   closeBtn.classList.add("close");
 
